@@ -431,7 +431,7 @@ module Sinatra
     def route!(base=self.class)
       if routes = base.routes[@request.request_method]
         original_params = @params
-        path            = unescape(@request.path_info)
+        path            = @request.path_info
 
         routes.each do |pattern, keys, conditions, block|
           if match = pattern.match(path)
