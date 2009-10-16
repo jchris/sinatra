@@ -440,9 +440,9 @@ module Sinatra
               if keys.any?
                 keys.zip(values).inject({}) do |hash,(k,v)|
                   if k == 'splat'
-                    (hash[k] ||= []) << v
+                    (hash[k] ||= []) << unescape(v)
                   else
-                    hash[k] = v
+                    hash[k] = unescape(v)
                   end
                   hash
                 end
